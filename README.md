@@ -31,7 +31,17 @@ Curso-Java/
 │   └── DoWhile/
 │       └── DoWhile.java       # Estrutura repetitiva 'do-while' (execução prévia à validação)
 ├── Section8/                  # Introdução à Programação Orientada a Objetos (POO)
-│   └── Program.java           # Problema dos triângulos (motivação e fundamentos para POO)
+│   ├── topico1/               # Classes, atributos e métodos
+│   │   ├── Program.java       # Comparação de áreas com instanciação de objetos
+│   │   └── entities/
+│   │       └── Triangle.java  # Classe Triangle com atributos e método area()
+│   ├── topico2/               # Reutilização, estado de objeto e toString()
+│   │   ├── Program.java       # Gerenciamento de estoque com leitura e atualização
+│   │   └── entities/
+│   │       └── Product.java   # Classe Product com métodos de negócio e sobrescrita de toString()
+│   └── topico3/               # Membros Estáticos (static) e Constantes
+│       ├── Program.java       # Cálculos geométricos invocando membros de classe
+│       └── Calculator.java    # Classe utilitária com constante PI e métodos estáticos
 └── exercicios/                # Resoluções de desafios e exercícios de fixação
 ```
 
@@ -60,10 +70,18 @@ Curso-Java/
   * **Laço `do-while`:** Bloco executado ao menos uma vez antes da checagem da condição, amplamente utilizado em menus e fluxos com confirmação de repetição do usuário `(s/n)`.
 
 ### 🔹 [Section 8: Introdução à Programação Orientada a Objetos (POO)](./Section8/)
-* **Conceitos abordados:**
-  * **Motivação para POO:** Resolução de problemas sem orientação a objetos (múltiplas variáveis avulsas e repetição de lógica) para evidenciar a necessidade de abstração.
-  * **Cálculo de áreas com a Fórmula de Heron:** Aplicação de funções matemáticas da biblioteca padrão `Math` (`Math.sqrt`).
-  * **Estruturação de dados e reaproveitamento:** Comparação de grandezas e preparação dos fundamentos para criação de classes, atributos e métodos.
+* **Tópico 1 - Classes, Atributos e Métodos:**
+  * Criação da entidade `Triangle` para agrupar medidas e encapsular o cálculo da fórmula de Heron no método `area()`.
+  * Instanciação de objetos com o operador `new` e alocação dinâmica de memória.
+  * Delegação de responsabilidade: a classe é responsável por seu próprio comportamento.
+* **Tópico 2 - Estado de Objeto, Operador `this` e `toString()`:**
+  * Modelagem da entidade `Product` para controle de estoque (`addProducts`, `removeProducts`, `totalValueInStock`).
+  * Uso do operador `this` para diferenciar atributos de classe de parâmetros homônimos.
+  * Sobrescrita do método `toString()` herdado de `Object` para representação textual simplificada do objeto.
+* **Tópico 3 - Membros Estáticos (`static`) & Constantes (`final`):**
+  * Conceito de membros de classe vs. membros de instância.
+  * Declaração de constantes com `public static final double PI`.
+  * Criação de classe utilitária `Calculator` contendo métodos estáticos (`circumference`, `volume`) que podem ser invocados diretamente sem necessidade de instanciar a classe (`Calculator.circumference(radius)`).
 
 ---
 
