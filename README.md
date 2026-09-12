@@ -30,6 +30,8 @@ Curso-Java/
 │   │   └── For.java           # Estrutura repetitiva 'for' (iterações pré-determinadas)
 │   └── DoWhile/
 │       └── DoWhile.java       # Estrutura repetitiva 'do-while' (execução prévia à validação)
+├── Section8/                  # Introdução à Programação Orientada a Objetos (POO)
+│   └── Program.java           # Problema dos triângulos (motivação e fundamentos para POO)
 └── exercicios/                # Resoluções de desafios e exercícios de fixação
 ```
 
@@ -56,6 +58,12 @@ Curso-Java/
   * **Laço `while`:** Ideal quando não se sabe previamente o número de repetições, dependendo de uma condição de parada inicial.
   * **Laço `for`:** Ideal para iterações sobre intervalos e contagens conhecidas.
   * **Laço `do-while`:** Bloco executado ao menos uma vez antes da checagem da condição, amplamente utilizado em menus e fluxos com confirmação de repetição do usuário `(s/n)`.
+
+### 🔹 [Section 8: Introdução à Programação Orientada a Objetos (POO)](./Section8/)
+* **Conceitos abordados:**
+  * **Motivação para POO:** Resolução de problemas sem orientação a objetos (múltiplas variáveis avulsas e repetição de lógica) para evidenciar a necessidade de abstração.
+  * **Cálculo de áreas com a Fórmula de Heron:** Aplicação de funções matemáticas da biblioteca padrão `Math` (`Math.sqrt`).
+  * **Estruturação de dados e reaproveitamento:** Comparação de grandezas e preparação dos fundamentos para criação de classes, atributos e métodos.
 
 ---
 

@@ -1,0 +1,11 @@
+# Bytecode compilado
+bin/
+*.class
+
+# Configurações de IDEs
+.vscode/
+.idea/
+*.iml
+.project
+.classpath
+.settings/
