@@ -42,10 +42,10 @@ Curso-Java/
 │   └── topico3/               # Membros Estáticos (static) e Constantes
 │       ├── Program.java       # Cálculos geométricos invocando membros de classe
 │       └── Calculator.java    # Classe utilitária com constante PI e métodos estáticos
-├── Section9/                  # Construtores, Sobrecarga e Palavra-chave 'this'
-│   ├── Program.java           # Instanciação com construtores sobrecarregados
+├── Section9/                  # Construtores, Sobrecarga e Encapsulamento
+│   ├── Program.java           # Instanciação com construtores sobrecarregados e acesso via métodos
 │   └── entities/
-│       └── Product.java       # Classe Product com múltiplos construtores e sobrecarga
+│       └── Product.java       # Classe Product com atributos privados, getters/setters e regras de negócio
 └── exercicios/                # Resoluções de desafios e exercícios de fixação
 ```
 
@@ -87,11 +87,14 @@ Curso-Java/
   * Declaração de constantes com `public static final double PI`.
   * Criação de classe utilitária `Calculator` contendo métodos estáticos (`circumference`, `volume`) que podem ser invocados diretamente sem necessidade de instanciar a classe (`Calculator.circumference(radius)`).
 
-### 🔹 [Section 9: Construtores, Palavra-chave 'this' e Sobrecarga](./Section9/)
+### 🔹 [Section 9: Construtores, Sobrecarga e Encapsulamento](./Section9/)
 * **Conceitos abordados:**
   * **Construtores Personalizados:** Inicialização de atributos obrigatórios no momento da instanciação (`new Product(name, price)`), impedindo a existência de objetos em estado inconsistente.
   * **Sobrecarga (Overload):** Criação de múltiplos construtores para a mesma entidade (construtor padrão vazio, construtor com parâmetros completos e construtor opcional com quantidade zerada).
   * **Operador `this`:** Associação inequívoca entre atributos da instância e parâmetros recebidos na inicialização.
+  * **Encapsulamento & Modificadores de Acesso (`private`):** Blindagem dos atributos contra manipulações externas indevidas.
+  * **Getters e Setters:** Métodos de acesso controlados para leitura e alteração de propriedades (`getName()`, `setName()`, `getPrice()`, `setPrice()`).
+  * **Proteção de Regras de Domínio:** Omissão intencional de `setQtd()`, garantindo que o saldo em estoque seja modificado única e exclusivamente através dos métodos de negócio `addProducts()` e `removeProducts()`.
 
 ---
 
