@@ -42,6 +42,10 @@ Curso-Java/
 │   └── topico3/               # Membros Estáticos (static) e Constantes
 │       ├── Program.java       # Cálculos geométricos invocando membros de classe
 │       └── Calculator.java    # Classe utilitária com constante PI e métodos estáticos
+├── Section9/                  # Construtores, Sobrecarga e Palavra-chave 'this'
+│   ├── Program.java           # Instanciação com construtores sobrecarregados
+│   └── entities/
+│       └── Product.java       # Classe Product com múltiplos construtores e sobrecarga
 └── exercicios/                # Resoluções de desafios e exercícios de fixação
 ```
 
@@ -82,6 +86,12 @@ Curso-Java/
   * Conceito de membros de classe vs. membros de instância.
   * Declaração de constantes com `public static final double PI`.
   * Criação de classe utilitária `Calculator` contendo métodos estáticos (`circumference`, `volume`) que podem ser invocados diretamente sem necessidade de instanciar a classe (`Calculator.circumference(radius)`).
+
+### 🔹 [Section 9: Construtores, Palavra-chave 'this' e Sobrecarga](./Section9/)
+* **Conceitos abordados:**
+  * **Construtores Personalizados:** Inicialização de atributos obrigatórios no momento da instanciação (`new Product(name, price)`), impedindo a existência de objetos em estado inconsistente.
+  * **Sobrecarga (Overload):** Criação de múltiplos construtores para a mesma entidade (construtor padrão vazio, construtor com parâmetros completos e construtor opcional com quantidade zerada).
+  * **Operador `this`:** Associação inequívoca entre atributos da instância e parâmetros recebidos na inicialização.
 
 ---
 
