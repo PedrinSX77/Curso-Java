@@ -46,7 +46,11 @@ Curso-Java/
 │   ├── Program.java           # Instanciação com construtores sobrecarregados e acesso via métodos
 │   └── entities/
 │       └── Product.java       # Classe Product com atributos privados, getters/setters e regras de negócio
-└── exercicios/                # Resoluções de desafios e exercícios de fixação
+└── exercicios/                # Resoluções de desafios e exercícios práticos de fixação
+    └── BankExercice/          # Simulação de Sistema de Conta Bancária
+        ├── Program.java       # Fluxo de abertura de conta, depósitos e saques com validação
+        └── entities/
+            └── Account.java   # Entidade Account com regras de negócio, taxa de saque e encapsulamento
 ```
 
 ---
@@ -95,6 +99,13 @@ Curso-Java/
   * **Encapsulamento & Modificadores de Acesso (`private`):** Blindagem dos atributos contra manipulações externas indevidas.
   * **Getters e Setters:** Métodos de acesso controlados para leitura e alteração de propriedades (`getName()`, `setName()`, `getPrice()`, `setPrice()`).
   * **Proteção de Regras de Domínio:** Omissão intencional de `setQtd()`, garantindo que o saldo em estoque seja modificado única e exclusivamente através dos métodos de negócio `addProducts()` e `removeProducts()`.
+
+### 🔹 [Exercícios de Fixação](./exercicios/)
+* **[BankExercice - Sistema de Conta Bancária](./exercicios/BankExercice/):**
+  * Implementação da entidade `Account` consolidando encapsulamento e proteção de saldo.
+  * Imutabilidade do número da conta (sem `setAccountNumber`) e proteção de saldo (sem `setBalance`).
+  * Regras de negócio de depósito e saque com taxa fixa de `$ 5.00`.
+  * Validação defensiva de entrada (`y/n`) e consumo correto de quebra de linha com `sc.nextLine()`.
 
 ---
 
