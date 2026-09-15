@@ -1,4 +1,4 @@
-package Section10.Entities;
+package Section10.Vetores.Entities;
 
 public class Product {
     private String name;

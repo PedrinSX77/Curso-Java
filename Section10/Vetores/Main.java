@@ -1,9 +1,9 @@
-package Section10;
+package Section10.Vetores;
 
 import java.util.Locale;
 import java.util.Scanner;
 
-import Section10.Entities.Product;
+import Section10.Vetores.Entities.Product;
 
 public class Main {
     public static void main(String[] args) {

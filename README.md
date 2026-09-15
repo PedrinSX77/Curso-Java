@@ -47,9 +47,12 @@ Curso-Java/
 │   └── entities/
 │       └── Product.java       # Classe Product com atributos privados, getters/setters e regras de negócio
 ├── Section10/                 # Comportamento de Memória, Arrays e Listas
-│   ├── Main.java              # Vetor de objetos, cálculo de média e tratamento com ternário
-│   └── Entities/
-│       └── Product.java       # Entidade Product utilizada como tipo referência no vetor
+│   ├── Vetores/               # Manipulação de vetores de objetos e memória
+│   │   ├── Main.java          # Vetor de objetos, cálculo de média e tratamento com ternário
+│   │   └── Entities/
+│   │       └── Product.java   # Entidade Product utilizada como tipo referência no vetor
+│   └── Listas/                # Coleções dinâmicas e programação funcional
+│       └── Main.java          # Métodos de List, ArrayList, removeIf, streams e filtros lambda
 └── exercicios/                # Resoluções de desafios e exercícios práticos de fixação
     ├── BankExercice/          # Simulação de Sistema de Conta Bancária
     │   ├── Program.java       # Fluxo de abertura de conta, depósitos e saques com validação
@@ -109,11 +112,16 @@ Curso-Java/
   * **Proteção de Regras de Domínio:** Omissão intencional de `setQtd()`, garantindo que o saldo em estoque seja modificado única e exclusivamente através dos métodos de negócio `addProducts()` e `removeProducts()`.
 
 ### 🔹 [Section 10: Comportamento de Memória, Arrays e Listas](./Section10/)
-* **Conceitos abordados:**
+* **Vetores (`Section10/Vetores/`):**
   * **Comportamento de Memória (Stack vs. Heap):** Alocação dinâmica de arrays na Heap e armazenamento de ponteiros/referências na Stack.
   * **Vetores de Tipos Referência (`Product[]`):** Inicialização de posições com ponteiros nulos (`null`) e posterior instanciação de objetos na memória Heap.
   * **Iteração com `vect.length`:** Utilização da propriedade intrínseca do vetor para percorrer posições e acumular valores via getters.
   * **Programação Defensiva com Operador Ternário:** Tratamento para evitar o valor `NaN` em divisões de ponto flutuante com entrada zero (`(n == 0) ? 0.0 : sum / n`).
+* **Listas & Programação Funcional (`Section10/Listas/`):**
+  * **Coleções Dinâmicas (`List<T>` & `ArrayList<T>`):** Superação do tamanho fixo de vetores com alocação dinâmica e uso de Wrapper Classes.
+  * **Operações de Lista:** Inserção posicional (`add(index, elem)`), contagem (`size()`), busca (`indexOf()`) e remoções por índice ou valor.
+  * **Expressões Lambda e Predicados:** Remoção condicional declarativa com `removeIf(x -> x.charAt(0) == 'M')`.
+  * **Streams e Filtros Funcionais:** Manipulação moderna de fluxos de dados com `list.stream().filter(...).collect(Collectors.toList())`.
 
 ### 🔹 [Exercícios de Fixação](./exercicios/)
 * **[BankExercice - Sistema de Conta Bancária](./exercicios/BankExercice/):**
