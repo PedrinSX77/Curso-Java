@@ -51,10 +51,14 @@ Curso-Java/
 │   └── Entities/
 │       └── Product.java       # Entidade Product utilizada como tipo referência no vetor
 └── exercicios/                # Resoluções de desafios e exercícios práticos de fixação
-    └── BankExercice/          # Simulação de Sistema de Conta Bancária
-        ├── Program.java       # Fluxo de abertura de conta, depósitos e saques com validação
+    ├── BankExercice/          # Simulação de Sistema de Conta Bancária
+    │   ├── Program.java       # Fluxo de abertura de conta, depósitos e saques com validação
+    │   └── entities/
+    │       └── Account.java   # Entidade Account com regras de negócio, taxa de saque e encapsulamento
+    └── Alturas/               # Estatísticas de Altura e Idade com Vetores de Objetos
+        ├── Main.java          # Entrada com do-while defensivo, média e cálculo percentual
         └── entities/
-            └── Account.java   # Entidade Account com regras de negócio, taxa de saque e encapsulamento
+            └── Person.java    # Entidade Person com atributos encapsulados (name, age, height)
 ```
 
 ---
@@ -117,6 +121,11 @@ Curso-Java/
   * Imutabilidade do número da conta (sem `setAccountNumber`) e proteção de saldo (sem `setBalance`).
   * Regras de negócio de depósito e saque com taxa fixa de `$ 5.00`.
   * Validação defensiva de entrada (`y/n`) e consumo correto de quebra de linha com `sc.nextLine()`.
+* **[Alturas - Vetores de Objetos e Estatísticas](./exercicios/Alturas/):**
+  * Modelagem orientada a objetos da entidade `Person` em substituição ao uso de múltiplos vetores paralelos soltos.
+  * Validação de entrada defensiva com laço `do-while (n <= 0)` para assegurar integridade do tamanho do vetor.
+  * Tratamento do buffer do teclado intercalando `nextLine()`, `nextInt()` e `nextDouble()`.
+  * Cálculo exato de média de altura e percentual de menores de 16 anos com ponto flutuante `(under16 * 100.0) / persons.length` e formatação `%%`.
 
 ---
 
