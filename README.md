@@ -46,6 +46,10 @@ Curso-Java/
 │   ├── Program.java           # Instanciação com construtores sobrecarregados e acesso via métodos
 │   └── entities/
 │       └── Product.java       # Classe Product com atributos privados, getters/setters e regras de negócio
+├── Section10/                 # Comportamento de Memória, Arrays e Listas
+│   ├── Main.java              # Vetor de objetos, cálculo de média e tratamento com ternário
+│   └── Entities/
+│       └── Product.java       # Entidade Product utilizada como tipo referência no vetor
 └── exercicios/                # Resoluções de desafios e exercícios práticos de fixação
     └── BankExercice/          # Simulação de Sistema de Conta Bancária
         ├── Program.java       # Fluxo de abertura de conta, depósitos e saques com validação
@@ -99,6 +103,13 @@ Curso-Java/
   * **Encapsulamento & Modificadores de Acesso (`private`):** Blindagem dos atributos contra manipulações externas indevidas.
   * **Getters e Setters:** Métodos de acesso controlados para leitura e alteração de propriedades (`getName()`, `setName()`, `getPrice()`, `setPrice()`).
   * **Proteção de Regras de Domínio:** Omissão intencional de `setQtd()`, garantindo que o saldo em estoque seja modificado única e exclusivamente através dos métodos de negócio `addProducts()` e `removeProducts()`.
+
+### 🔹 [Section 10: Comportamento de Memória, Arrays e Listas](./Section10/)
+* **Conceitos abordados:**
+  * **Comportamento de Memória (Stack vs. Heap):** Alocação dinâmica de arrays na Heap e armazenamento de ponteiros/referências na Stack.
+  * **Vetores de Tipos Referência (`Product[]`):** Inicialização de posições com ponteiros nulos (`null`) e posterior instanciação de objetos na memória Heap.
+  * **Iteração com `vect.length`:** Utilização da propriedade intrínseca do vetor para percorrer posições e acumular valores via getters.
+  * **Programação Defensiva com Operador Ternário:** Tratamento para evitar o valor `NaN` em divisões de ponto flutuante com entrada zero (`(n == 0) ? 0.0 : sum / n`).
 
 ### 🔹 [Exercícios de Fixação](./exercicios/)
 * **[BankExercice - Sistema de Conta Bancária](./exercicios/BankExercice/):**
