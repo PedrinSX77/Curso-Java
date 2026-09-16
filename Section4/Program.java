@@ -1,4 +1,5 @@
 package Section4;
+
 import java.util.Locale;
 
 public class Program {

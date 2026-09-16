@@ -60,10 +60,14 @@ Curso-Java/
     │   ├── Program.java       # Fluxo de abertura de conta, depósitos e saques com validação
     │   └── entities/
     │       └── Account.java   # Entidade Account com regras de negócio, taxa de saque e encapsulamento
-    └── Alturas/               # Estatísticas de Altura e Idade com Vetores de Objetos
-        ├── Main.java          # Entrada com do-while defensivo, média e cálculo percentual
+    ├── Alturas/               # Estatísticas de Altura e Idade com Vetores de Objetos
+    │   ├── Main.java          # Entrada com do-while defensivo, média e cálculo percentual
+    │   └── entities/
+    │       └── Person.java    # Entidade Person com atributos encapsulados (name, age, height)
+    └── Employee/              # Gerenciamento de Reajuste Salarial com Listas e Streams
+        ├── Main.java          # Cadastro em List<Employee>, busca com Stream/Filter e tratamento de inexistência
         └── entities/
-            └── Person.java    # Entidade Person com atributos encapsulados (name, age, height)
+            └── Employee.java  # Entidade Employee com id, name, salary encapsulados e método growSalary
 ```
 
 ---
@@ -140,6 +144,12 @@ Curso-Java/
   * Validação de entrada defensiva com laço `do-while (n <= 0)` para assegurar integridade do tamanho do vetor.
   * Tratamento do buffer do teclado intercalando `nextLine()`, `nextInt()` e `nextDouble()`.
   * Cálculo exato de média de altura e percentual de menores de 16 anos com ponto flutuante `(under16 * 100.0) / persons.length` e formatação `%%`.
+* **[Employee - Reajuste Salarial com Coleções Dinâmicas (`List`)](./exercicios/Employee/):**
+  * Modelagem orientada a objetos da entidade `Employee` com proteção de estado (sem `setSalary`, alteração exclusiva via método de negócio `growSalary(percentage)`).
+  * Gerenciamento de coleção dinâmica com `List<Employee> list = new ArrayList<>()`.
+  * Consulta e busca de objetos por identificador único (`id`) utilizando a API de Streams do Java moderno (`list.stream().filter(...).findFirst().orElse(null)`).
+  * Tratamento resiliente para o cenário de ID não encontrado (*"Esse funcionario não foi encontrado"*), evitando quebras de fluxo ou exceções de ponteiro nulo (`NullPointerException`).
+  * Sobrescrita de `toString()` com `String.format("%.2f", salary)` para formatação consistente na saída dos dados.
 
 ---
 
