@@ -46,13 +46,15 @@ Curso-Java/
 │   ├── Program.java           # Instanciação com construtores sobrecarregados e acesso via métodos
 │   └── entities/
 │       └── Product.java       # Classe Product com atributos privados, getters/setters e regras de negócio
-├── Section10/                 # Comportamento de Memória, Arrays e Listas
+├── Section10/                 # Comportamento de Memória, Arrays, Listas e Matrizes
 │   ├── Vetores/               # Manipulação de vetores de objetos e memória
 │   │   ├── Main.java          # Vetor de objetos, cálculo de média e tratamento com ternário
 │   │   └── Entities/
 │   │       └── Product.java   # Entidade Product utilizada como tipo referência no vetor
-│   └── Listas/                # Coleções dinâmicas e programação funcional
-│       └── Main.java          # Métodos de List, ArrayList, removeIf, streams e filtros lambda
+│   ├── Listas/                # Coleções dinâmicas e programação funcional
+│   │   └── Main.java          # Métodos de List, ArrayList, removeIf, streams e filtros lambda
+│   └── Matrizes/              # Arrays bidimensionais (linhas e colunas)
+│       └── Main.java          # Matriz quadrada, diagonal principal em O(N) e contagem otimizada de negativos
 └── exercicios/                # Resoluções de desafios e exercícios práticos de fixação
     ├── BankExercice/          # Simulação de Sistema de Conta Bancária
     │   ├── Program.java       # Fluxo de abertura de conta, depósitos e saques com validação
@@ -111,7 +113,7 @@ Curso-Java/
   * **Getters e Setters:** Métodos de acesso controlados para leitura e alteração de propriedades (`getName()`, `setName()`, `getPrice()`, `setPrice()`).
   * **Proteção de Regras de Domínio:** Omissão intencional de `setQtd()`, garantindo que o saldo em estoque seja modificado única e exclusivamente através dos métodos de negócio `addProducts()` e `removeProducts()`.
 
-### 🔹 [Section 10: Comportamento de Memória, Arrays e Listas](./Section10/)
+### 🔹 [Section 10: Comportamento de Memória, Arrays, Listas e Matrizes](./Section10/)
 * **Vetores (`Section10/Vetores/`):**
   * **Comportamento de Memória (Stack vs. Heap):** Alocação dinâmica de arrays na Heap e armazenamento de ponteiros/referências na Stack.
   * **Vetores de Tipos Referência (`Product[]`):** Inicialização de posições com ponteiros nulos (`null`) e posterior instanciação de objetos na memória Heap.
@@ -122,6 +124,10 @@ Curso-Java/
   * **Operações de Lista:** Inserção posicional (`add(index, elem)`), contagem (`size()`), busca (`indexOf()`) e remoções por índice ou valor.
   * **Expressões Lambda e Predicados:** Remoção condicional declarativa com `removeIf(x -> x.charAt(0) == 'M')`.
   * **Streams e Filtros Funcionais:** Manipulação moderna de fluxos de dados com `list.stream().filter(...).collect(Collectors.toList())`.
+* **Matrizes (`Section10/Matrizes/`):**
+  * **Estrutura Bidimensional (`int[][]`):** Alocação de matrizes na memória (vetor de vetores), onde `mat.length` representa o número de linhas e `mat[i].length` representa as colunas da linha `i`.
+  * **Algoritmo de Passagem Única (*Single Pass*):** Otimização da contagem de números negativos diretamente durante a leitura dos dados ($1 \times N^2$), reduzindo pela metade as iterações em relação ao modelo procedural tradicional.
+  * **Diagonal Principal em $O(N)$:** Extração dos elementos onde linha é igual à coluna através de acesso direto `mat[i][i]` em um único laço, sem necessidade de laços aninhados.
 
 ### 🔹 [Exercícios de Fixação](./exercicios/)
 * **[BankExercice - Sistema de Conta Bancária](./exercicios/BankExercice/):**
