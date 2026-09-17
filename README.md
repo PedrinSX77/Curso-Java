@@ -64,10 +64,12 @@ Curso-Java/
     │   ├── Main.java          # Entrada com do-while defensivo, média e cálculo percentual
     │   └── entities/
     │       └── Person.java    # Entidade Person com atributos encapsulados (name, age, height)
-    └── Employee/              # Gerenciamento de Reajuste Salarial com Listas e Streams
-        ├── Main.java          # Cadastro em List<Employee>, busca com Stream/Filter e tratamento de inexistência
-        └── entities/
-            └── Employee.java  # Entidade Employee com id, name, salary encapsulados e método growSalary
+    ├── Employee/              # Gerenciamento de Reajuste Salarial com Listas e Streams
+    │   ├── Main.java          # Cadastro em List<Employee>, busca com Stream/Filter e tratamento de inexistência
+    │   └── entities/
+    │       └── Employee.java  # Entidade Employee com id, name, salary encapsulados e método growSalary
+    └── Matriz/                # Busca e Navegação Bidimensional de Vizinhos em Matriz M x N
+        └── Main.java          # Leitura Row-Major, proteção de bordas (off-by-one) e exibição de vizinhos
 ```
 
 ---
@@ -150,6 +152,16 @@ Curso-Java/
   * Consulta e busca de objetos por identificador único (`id`) utilizando a API de Streams do Java moderno (`list.stream().filter(...).findFirst().orElse(null)`).
   * Tratamento resiliente para o cenário de ID não encontrado (*"Esse funcionario não foi encontrado"*), evitando quebras de fluxo ou exceções de ponteiro nulo (`NullPointerException`).
   * Sobrescrita de `toString()` com `String.format("%.2f", salary)` para formatação consistente na saída dos dados.
+* **[Matriz - Navegação e Mapeamento de Vizinhos em Matriz $M \times N$](./exercicios/Matriz/):**
+  * Alocação dinâmica de matriz bidimensional retangular `new int[m][n]`.
+  * Leitura e iteração com ordenação por linhas (*Row-Major Order*), utilizando `list.length` para limites de linhas e `list[i].length` para limites de colunas.
+  * Algoritmo de busca por ocorrências de um valor $X$ com localização de coordenadas `Position i,j:`.
+  * Verificação defensiva de bordas para navegação nos 4 eixos cardeais:
+    * **Esquerda (*Left*):** `j > 0` $\rightarrow$ `list[i][j - 1]`
+    * **Direita (*Right*):** `j < list[i].length - 1` $\rightarrow$ `list[i][j + 1]`
+    * **Acima (*Up*):** `i > 0` $\rightarrow$ `list[i - 1][j]`
+    * **Abaixo (*Down*):** `i < list.length - 1` $\rightarrow$ `list[i + 1][j]`
+  * Blindagem total contra exceções de estouro de limites (`ArrayIndexOutOfBoundsException`) em elementos situados nas extremidades da matriz.
 
 ---
 

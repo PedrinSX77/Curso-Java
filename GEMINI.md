@@ -38,4 +38,11 @@ O objetivo deste repositório NÃO é entregar código pronto de forma passiva, 
 
 ---
 
+## ⚡ Comandos e Gatilhos de Automação
+* **"da um push"**: Quando o usuário disser essa frase, a IA deve automaticamente:
+  1. Atualizar o `README.md` (árvore do projeto e documentação detalhada dos novos exercícios/tópicos criados);
+  2. Executar `git add .`, gerar commit semântico e fazer `git push` para o GitHub.
+
+---
+
 *Regras estabelecidas e vigentes em todo o repositório Curso-Java.*
