@@ -55,6 +55,8 @@ Curso-Java/
 │   │   └── Main.java          # Métodos de List, ArrayList, removeIf, streams e filtros lambda
 │   └── Matrizes/              # Arrays bidimensionais (linhas e colunas)
 │       └── Main.java          # Matriz quadrada, diagonal principal em O(N) e contagem otimizada de negativos
+├── Section11/                 # Tópicos Especiais em Java: Data-Hora (API java.time)
+│   └── Main.java              # Instanciação, parse ISO 8601, fusos horários e DateTimeFormatter
 └── exercicios/                # Resoluções de desafios e exercícios práticos de fixação
     ├── BankExercice/          # Simulação de Sistema de Conta Bancária
     │   ├── Program.java       # Fluxo de abertura de conta, depósitos e saques com validação
@@ -134,6 +136,17 @@ Curso-Java/
   * **Estrutura Bidimensional (`int[][]`):** Alocação de matrizes na memória (vetor de vetores), onde `mat.length` representa o número de linhas e `mat[i].length` representa as colunas da linha `i`.
   * **Algoritmo de Passagem Única (*Single Pass*):** Otimização da contagem de números negativos diretamente durante a leitura dos dados ($1 \times N^2$), reduzindo pela metade as iterações em relação ao modelo procedural tradicional.
   * **Diagonal Principal em $O(N)$:** Extração dos elementos onde linha é igual à coluna através de acesso direto `mat[i][i]` em um único laço, sem necessidade de laços aninhados.
+
+### 🔹 [Section 11: Tópicos Especiais em Java: Data-Hora](./Section11/)
+* **Conceitos abordados:**
+  * **API `java.time` (Java 8+):** Padrão moderno, imutável e thread-safe para manipulação temporal, superando classes legadas (`Date`, `Calendar`).
+  * **Tipos Temporais Fundamentais:**
+    * `LocalDate`: Representa apenas uma data (ano-mês-dia), sem componente de horário ou fuso horário.
+    * `LocalDateTime`: Representa data e hora locais completas (com frações de segundos), sem fuso horário.
+    * `Instant`: Representa um instante único na linha do tempo global em padrão UTC / GMT (horário Zulu 'Z', referência de Londres).
+  * **Parsing com Padrão ISO 8601:** Conversão de strings formatadas diretamente para objetos temporais (`LocalDate.parse("2008-01-28")`, `Instant.parse("2008-01-28T20:30:00-03:00")` convertendo fuso para UTC).
+  * **Formatação Customizada com `DateTimeFormatter`:** Criação de máscaras personalizadas (ex: `"dd/MM/yyyy"` e `"dd/MM/yyyy HH:mm"`) para parsing de datas e horários no formato brasileiro.
+  * **Instanciação Direta (`.of()`):** Construção de objetos temporais a partir de dados inteiros isolados (`LocalDate.of(2008, 1, 28)` e `LocalDateTime.of(2008, 1, 28, 1, 30)`).
 
 ### 🔹 [Exercícios de Fixação](./exercicios/)
 * **[BankExercice - Sistema de Conta Bancária](./exercicios/BankExercice/):**
