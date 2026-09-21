@@ -3,6 +3,7 @@ package Section11;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
 public class Main {
@@ -10,7 +11,7 @@ public class Main {
 
         DateTimeFormatter fmt1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         DateTimeFormatter fmt2 = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-
+        DateTimeFormatter fmt3 = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm").withZone(ZoneId.systemDefault());
         // 1. Data local atual (apenas ano-mês-dia, sem horário)
         LocalDate d01 = LocalDate.now();
 
@@ -31,7 +32,7 @@ public class Main {
 
         // 6. Converte texto com fuso horário especificado (-03:00) e converte
         // automaticamente para UTC no Instant
-        Instant d06 = Instant.parse("2008-01-28T20:30:00-03:00");
+        Instant d06 = Instant.parse("2008-01-28T20:30:00Z");
 
         // 7. Converte texto em formato customizado (ex: padrão brasileiro "dd/MM/yyyy")
         // usando um DateTimeFormatter
@@ -40,10 +41,12 @@ public class Main {
         // ("dd/MM/yyyy HH:mm") para LocalDateTime
         LocalDateTime d08 = LocalDateTime.parse("28/01/2008 01:30", fmt2);
 
-        // 9. Instancia data diretamente a partir de valores isolados inteiros (ano, mês, dia)
+        // 9. Instancia data diretamente a partir de valores isolados inteiros (ano,
+        // mês, dia)
         LocalDate d09 = LocalDate.of(2008, 1, 28);
 
-        // 10. Instancia data e hora a partir de valores isolados (ano, mês, dia, hora, minuto)
+        // 10. Instancia data e hora a partir de valores isolados (ano, mês, dia, hora,
+        // minuto)
         LocalDateTime d10 = LocalDateTime.of(2008, 1, 28, 1, 30);
 
         System.out.println("D01: " + d01);
@@ -56,5 +59,11 @@ public class Main {
         System.out.println("D08: " + d08);
         System.out.println("D09: " + d09);
         System.out.println("D10: " + d10);
+        System.out.println();
+        System.out.println("D04: " + d04.format(fmt1));
+        System.out.println("D04: " + fmt1.format(d04));
+        System.out.println("D05: " + d05.format(fmt2));
+        System.out.println("D05: " + fmt2.format(d05));
+        System.out.println("D06: " + fmt3.format(d06));
     }
 }

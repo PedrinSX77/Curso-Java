@@ -174,7 +174,15 @@ Curso-Java/
     * **Direita (*Right*):** `j < list[i].length - 1` $\rightarrow$ `list[i][j + 1]`
     * **Acima (*Up*):** `i > 0` $\rightarrow$ `list[i - 1][j]`
     * **Abaixo (*Down*):** `i < list.length - 1` $\rightarrow$ `list[i + 1][j]`
-  * Blindagem total contra exceções de estouro de limites (`ArrayIndexOutOfBoundsException`) em elementos situados nas extremidades da matriz.
+  * **Blindagem total contra exceções de estouro de limites (`ArrayIndexOutOfBoundsException`) em elementos situados nas extremidades da matriz.**
+
+### 🔹 [LeetCode: Algoritmos e Estruturas de Dados](./Leetcode/)
+* **[LeetCode #1 - Two Sum](./Leetcode/TwoSum.java):**
+  * **Problema:** Encontrar os dois índices em um vetor de inteiros cuja soma resulte no valor `target`.
+  * **Estratégia:** Força Bruta (*Brute Force*) com dois ponteiros/laços aninhados (`j = i + 1`), testando combinações sem repetir o mesmo elemento.
+  * **Complexidade de Tempo:** $O(N^2)$ ($\approx \frac{N^2}{2}$ comparações no pior caso).
+  * **Complexidade de Espaço:** $O(1)$ (Espaço Constante), superando **84.69%** das submissões em consumo de memória no LeetCode.
+  * **Status:** Aceito (*Accepted - 65/65 testcases*) na primeira submissão.
 
 ---
 
