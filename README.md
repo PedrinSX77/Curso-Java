@@ -85,11 +85,14 @@ Curso-Java/
     │   ├── Media3.java        # Geração pseudoaleatória com Math.random(), soma e média formatada
     │   ├── TesteArray.java    # Análise de alocação de memória: Stack vs. Heap e erro de inicializador solto
     │   └── respostas_lista6_Arrays.txt # Gabarito técnico completo com explicações conceituais
-    └── DesafiosIteracao/      # Padrões e Paradigmas de Iteração em Java
-        ├── ClassicProblem.java # Algoritmo de Fibonacci com offsets i-1 / i-2 e passo otimizado i+=2
-        ├── Foreach.java       # Varredura segura com for-each e contagem condicional por tamanho de String
-        ├── Streams.java       # Pipeline funcional declarativo (filter, map e sum em DoubleStream)
-        └── AnaliseDeTemperaturas.java # Benchmark conceitual comparativo: for vs. for-each vs. Stream API (max)
+    ├── DesafiosIteracao/      # Padrões e Paradigmas de Iteração em Java
+    │   ├── ClassicProblem.java # Algoritmo de Fibonacci com offsets i-1 / i-2 e passo otimizado i+=2
+    │   ├── Foreach.java       # Varredura segura com for-each e contagem condicional por tamanho de String
+    │   ├── Streams.java       # Pipeline funcional declarativo (filter, map e sum em DoubleStream)
+    │   └── AnaliseDeTemperaturas.java # Benchmark conceitual comparativo: for vs. for-each vs. Stream API (max)
+    └── Retangulo/             # Instanciação, Construtores e Encapsulamento (Prof. Rafael Monteiro)
+        ├── Retangle.java      # Entidade Retangle com base, altura, métodos de cálculo e getters/setters
+        └── UseRetangle.java   # Executável com leitura dinâmica de N retângulos via Scanner
 ```
 
 ---
@@ -213,6 +216,9 @@ Curso-Java/
   * `Foreach`: Varredura resiliente a erros de limite (`IndexOutOfBoundsException`) e diferenciação entre `array.length` (propriedade de vetor) e `string.length()` (método de objeto String).
   * `Streams`: Pipeline puramente funcional sobre `DoubleStream` encadeando `filter(salary < 2000)`, `map(salary * 1.1)` e redução terminal imediata com `sum()`.
   * `AnaliseDeTemperaturas`: Desafio comparativo implementando o cálculo de valor máximo (`max`) através das três abordagens (`for`, `for-each` e `Stream API` com `OptionalInt` e `.getAsInt()`), avaliando trade-offs de legibilidade, performance e segurança.
+* **[Retangulo - Instanciação, Construtores e Encapsulamento (Lista 8 - Prof. Rafael Monteiro)](./exercicios/Retangulo/):**
+  * `Retangle`: Modelagem de entidade com atributos encapsulados (`private int base`, `private int height`), construtor para inicialização mandatória, métodos de negócio para cálculo (`showArea()` e `showPerimeter()`), getters, setters e sobrescrita de `toString()`.
+  * `UseRetangle`: Classe executável integrando leitura dinâmica de múltiplos retângulos via `Scanner`, instanciação dinâmica de objetos no laço e exibição dos resultados.
 
 ### 🔹 [LeetCode: Algoritmos e Estruturas de Dados](./Leetcode/)
 * **[LeetCode #1 - Two Sum](./Leetcode/TwoSum.java):**
