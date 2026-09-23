@@ -11,3 +11,6 @@ out/
 .classpath
 .settings/
 
+# Arquivos temporários e backups
+*.zip
+

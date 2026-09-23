@@ -58,10 +58,20 @@ Curso-Java/
 ├── Section11/                 # Tópicos Especiais em Java: Data-Hora (API java.time)
 │   └── Main.java              # Instanciação, parse ISO 8601, fusos horários e DateTimeFormatter
 ├── Section12/                 # Enumerações e Composição de Objetos
-│   ├── Main.java              # Instanciação de pedidos, conversão de Enum e manipulação de Date
-│   └── entities/
-│       ├── Order.java         # Entidade Order com id, moment e OrderStatus
-│       └── OrderStatus.java   # Enumeração representando ciclo de vida (PENDING_PAYMENT, PROCESSING, SHIPPED, DELIVERED)
+│   ├── Enum/                  # Enumerações e Ciclo de Vida de Pedidos
+│   │   ├── Main.java          # Conversão String/Enum, valueOf() e instanciação de pedidos
+│   │   └── entities/
+│   │       ├── Order.java     # Entidade Order com id, moment e OrderStatus
+│   │       └── OrderStatus.java # Enumeração representando ciclo de vida (PENDING_PAYMENT, PROCESSING, SHIPPED, DELIVERED)
+│   └── Composition/           # Composição de Objetos (1-1 e 1-N)
+│       ├── application/
+│       │   └── Program.java   # Fluxo de entrada defensivo (do-while), leitura de contratos e cálculo temporal
+│       ├── entities/
+│       │   ├── Department.java   # Entidade Departamento
+│       │   ├── HourContract.java # Contrato por hora com data (LocalDate), valor/hora e horas
+│       │   └── Worker.java       # Trabalhador com salário base, departamento e lista protegida de contratos
+│       └── enums/
+│           └── WorkerLevel.java  # Nível de experiência profissional (JUNIOR, MID_LEVEL, SENIOR)
 └── exercicios/                # Resoluções de desafios e exercícios práticos de fixação
     ├── BankExercice/          # Simulação de Sistema de Conta Bancária
     │   ├── Program.java       # Fluxo de abertura de conta, depósitos e saques com validação
@@ -170,11 +180,16 @@ Curso-Java/
   * **Instanciação Direta (`.of()`):** Construção de objetos temporais a partir de dados inteiros isolados (`LocalDate.of(2008, 1, 28)` e `LocalDateTime.of(2008, 1, 28, 1, 30)`).
 
 ### 🔹 [Section 12: Enumerações e Composição](./Section12/)
-* **Conceitos abordados:**
+* **Enumerações (`Section12/Enum/`):**
   * **Enumerações (`enum`):** Tipo especial que serve para especificar de forma literal um conjunto de constantes relacionadas (`OrderStatus`: `PENDING_PAYMENT`, `PROCESSING`, `SHIPPED`, `DELIVERED`), eliminando valores inválidos (magic numbers / strings).
-  * **Ciclo de Vida de Pedido:** Modelagem de estados reais de negócio através da enumeração `OrderStatus`.
+  * **Ciclo de Vida de Pedido:** Modelagem de estados reais de negócio com a entidade `Order`.
   * **Conversões String/Enum:** Conversão de texto para enum via `OrderStatus.valueOf("DELIVERED")` e conversão inversa via `.name()`.
-  * **Composição de Objetos:** A entidade `Order` encapsula identificador (`id`), instante temporal (`Date`) e estado através de `OrderStatus`.
+* **Composição de Objetos (`Section12/Composition/`):**
+  * **Composição 1-1 e 1-N:** Relação onde `Worker` possui um `Department` e uma coleção `List<HourContract>`.
+  * **Encapsulamento Defensivo:** A lista de contratos é instanciada diretamente (`new ArrayList<>()`), omitida do construtor e sem método `setContracts()`, sendo mutável apenas por métodos de domínio (`addContract` e `removeContract`).
+  * **Delegação e Baixo Acoplamento:** O cálculo total de cada contrato é delegado a `HourContract.totalValue()`, mantendo o `Worker` focado na agregação por competência mensal (`income(year, month)`).
+  * **Modernização com `java.time` (Java 8+):** Refatoração da API legada (`Date`/`Calendar`) para `LocalDate` e manipulação de competências temporais (mês/ano) utilizando `YearMonth` e `DateTimeFormatter`.
+  * **Programação Defensiva no Client (`Program.java`):** Tratamento do buffer do `Scanner` e validação com laço `do-while` para quantidade de contratos.
 
 ### 🔹 [Exercícios de Fixação](./exercicios/)
 * **[BankExercice - Sistema de Conta Bancária](./exercicios/BankExercice/):**

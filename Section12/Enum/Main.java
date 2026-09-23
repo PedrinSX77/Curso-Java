@@ -1,7 +1,8 @@
-package Section12;
+package Section12.Enum;
 
-import Section12.entities.Order;
-import Section12.entities.OrderStatus;
+import Section12.Enum.entities.Order;
+import Section12.Enum.entities.OrderStatus;
+
 import java.util.Date;
 
 public class Main {

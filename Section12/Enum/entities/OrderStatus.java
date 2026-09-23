@@ -1,4 +1,4 @@
-package Section12.entities;
+package Section12.Enum.entities;
 
 public enum OrderStatus {
     PENDING_PAYMENT,
