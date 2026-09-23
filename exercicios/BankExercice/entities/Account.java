@@ -1,7 +1,7 @@
 package entities;
 
 public class Account {
-    private int accountNumber;
+    private final int accountNumber;
     private String holder;
     private double balance = 0;
 

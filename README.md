@@ -57,6 +57,11 @@ Curso-Java/
 │       └── Main.java          # Matriz quadrada, diagonal principal em O(N) e contagem otimizada de negativos
 ├── Section11/                 # Tópicos Especiais em Java: Data-Hora (API java.time)
 │   └── Main.java              # Instanciação, parse ISO 8601, fusos horários e DateTimeFormatter
+├── Section12/                 # Enumerações e Composição de Objetos
+│   ├── Main.java              # Instanciação de pedidos, conversão de Enum e manipulação de Date
+│   └── entities/
+│       ├── Order.java         # Entidade Order com id, moment e OrderStatus
+│       └── OrderStatus.java   # Enumeração representando ciclo de vida (PENDING_PAYMENT, PROCESSING, SHIPPED, DELIVERED)
 └── exercicios/                # Resoluções de desafios e exercícios práticos de fixação
     ├── BankExercice/          # Simulação de Sistema de Conta Bancária
     │   ├── Program.java       # Fluxo de abertura de conta, depósitos e saques com validação
@@ -70,8 +75,21 @@ Curso-Java/
     │   ├── Main.java          # Cadastro em List<Employee>, busca com Stream/Filter e tratamento de inexistência
     │   └── entities/
     │       └── Employee.java  # Entidade Employee com id, name, salary encapsulados e método growSalary
-    └── Matriz/                # Busca e Navegação Bidimensional de Vizinhos em Matriz M x N
-        └── Main.java          # Leitura Row-Major, proteção de bordas (off-by-one) e exibição de vizinhos
+    ├── Matriz/                # Busca e Navegação Bidimensional de Vizinhos em Matriz M x N
+    │   └── Main.java          # Leitura Row-Major, proteção de bordas (off-by-one) e exibição de vizinhos
+    ├── ListaArrays/           # Fundamentos e Manipulação de Arrays (Prof. Rafael Monteiro)
+    │   ├── Array0.java        # Inicialização padrão de tipos numéricos e propriedade .length
+    │   ├── Array1.java        # Inicializadores diretos com chaves e varredura indexada
+    │   ├── Array2.java        # Transformação matemática com Math.sqrt() e casting explícito (int)
+    │   ├── ArrayDiasMes.java  # Métodos estáticos, responsabilidade única e mapeamento mês/dia
+    │   ├── Media3.java        # Geração pseudoaleatória com Math.random(), soma e média formatada
+    │   ├── TesteArray.java    # Análise de alocação de memória: Stack vs. Heap e erro de inicializador solto
+    │   └── respostas_lista6_Arrays.txt # Gabarito técnico completo com explicações conceituais
+    └── DesafiosIteracao/      # Padrões e Paradigmas de Iteração em Java
+        ├── ClassicProblem.java # Algoritmo de Fibonacci com offsets i-1 / i-2 e passo otimizado i+=2
+        ├── Foreach.java       # Varredura segura com for-each e contagem condicional por tamanho de String
+        ├── Streams.java       # Pipeline funcional declarativo (filter, map e sum em DoubleStream)
+        └── AnaliseDeTemperaturas.java # Benchmark conceitual comparativo: for vs. for-each vs. Stream API (max)
 ```
 
 ---
@@ -148,6 +166,13 @@ Curso-Java/
   * **Formatação Customizada com `DateTimeFormatter`:** Criação de máscaras personalizadas (ex: `"dd/MM/yyyy"` e `"dd/MM/yyyy HH:mm"`) para parsing de datas e horários no formato brasileiro.
   * **Instanciação Direta (`.of()`):** Construção de objetos temporais a partir de dados inteiros isolados (`LocalDate.of(2008, 1, 28)` e `LocalDateTime.of(2008, 1, 28, 1, 30)`).
 
+### 🔹 [Section 12: Enumerações e Composição](./Section12/)
+* **Conceitos abordados:**
+  * **Enumerações (`enum`):** Tipo especial que serve para especificar de forma literal um conjunto de constantes relacionadas (`OrderStatus`: `PENDING_PAYMENT`, `PROCESSING`, `SHIPPED`, `DELIVERED`), eliminando valores inválidos (magic numbers / strings).
+  * **Ciclo de Vida de Pedido:** Modelagem de estados reais de negócio através da enumeração `OrderStatus`.
+  * **Conversões String/Enum:** Conversão de texto para enum via `OrderStatus.valueOf("DELIVERED")` e conversão inversa via `.name()`.
+  * **Composição de Objetos:** A entidade `Order` encapsula identificador (`id`), instante temporal (`Date`) e estado através de `OrderStatus`.
+
 ### 🔹 [Exercícios de Fixação](./exercicios/)
 * **[BankExercice - Sistema de Conta Bancária](./exercicios/BankExercice/):**
   * Implementação da entidade `Account` consolidando encapsulamento e proteção de saldo.
@@ -175,6 +200,19 @@ Curso-Java/
     * **Acima (*Up*):** `i > 0` $\rightarrow$ `list[i - 1][j]`
     * **Abaixo (*Down*):** `i < list.length - 1` $\rightarrow$ `list[i + 1][j]`
   * **Blindagem total contra exceções de estouro de limites (`ArrayIndexOutOfBoundsException`) em elementos situados nas extremidades da matriz.**
+* **[ListaArrays - Fundamentos de Arrays (Prof. Rafael Monteiro)](./exercicios/ListaArrays/):**
+  * `Array0`: Investigação da inicialização default na Heap (`0` para inteiros e `0.0` para ponto flutuante) e medição dinâmica via propriedade `.length`.
+  * `Array1`: Inicialização direta por chaves `{1, 4, 9, ...}` e impressão estruturada de índices e elementos.
+  * `Array2`: Duplo array com transformação matemática via `Math.sqrt()` e casting explícito `(int)`.
+  * `ArrayDiasMes`: Decomposição de métodos estáticos (`void`), responsabilidade única e cálculo de índice deslocado (`i + 1`).
+  * `Media3`: Geração pseudoaleatória com `Math.random() * 10`, média aritmética e formatação de casas decimais.
+  * `TesteArray`: Diagnóstico e resolução do erro `"Array initializer is not allowed here"`, distinguindo a alocação do ponteiro na Stack da instanciação com `new int[]{...}` na Heap.
+  * `respostas_lista6_Arrays.txt`: Documento formal contendo as respostas técnicas e conceituais da lista.
+* **[DesafiosIteracao - Os 3 Paradigmas de Iteração em Java](./exercicios/DesafiosIteracao/):**
+  * `ClassicProblem`: Implementação do clássico de Fibonacci usando offsets de memória (`i - 1` e `i - 2`), combinada com laço de passo duplo (`i += 2`) para visitar apenas índices ímpares em tempo $O(N/2)$ e sem condicionais.
+  * `Foreach`: Varredura resiliente a erros de limite (`IndexOutOfBoundsException`) e diferenciação entre `array.length` (propriedade de vetor) e `string.length()` (método de objeto String).
+  * `Streams`: Pipeline puramente funcional sobre `DoubleStream` encadeando `filter(salary < 2000)`, `map(salary * 1.1)` e redução terminal imediata com `sum()`.
+  * `AnaliseDeTemperaturas`: Desafio comparativo implementando o cálculo de valor máximo (`max`) através das três abordagens (`for`, `for-each` e `Stream API` com `OptionalInt` e `.getAsInt()`), avaliando trade-offs de legibilidade, performance e segurança.
 
 ### 🔹 [LeetCode: Algoritmos e Estruturas de Dados](./Leetcode/)
 * **[LeetCode #1 - Two Sum](./Leetcode/TwoSum.java):**

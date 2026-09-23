@@ -1,0 +1,76 @@
+================================================================================
+LISTA 6 - EXERCÍCIOS DE ARRAYS (POO EM JAVA)
+Aluno: Pedro Henrique
+Professor: Rafael Monteiro
+================================================================================
+
+--------------------------------------------------------------------------------
+EXERCÍCIO 1
+--------------------------------------------------------------------------------
+Programa: Array0.java
+
+a) Quando se cria um array de valores numéricos, com que valor os seus elementos são automaticamente inicializados?
+Resposta: 
+Quando um array de tipos numéricos é instanciado em Java (na memória Heap), seus elementos são inicializados automaticamente com o valor padrão 0 (zero) para tipos inteiros (byte, short, int, long) ou 0.0 para tipos de ponto flutuante (float, double).
+
+b) Como se faz para saber qual o número de elementos de um array?
+Resposta: 
+Utiliza-se a propriedade/atributo público embutido .length do array.
+Exemplo: dados.length (retorna um número inteiro representando o tamanho total alocado para o array).
+
+--------------------------------------------------------------------------------
+EXERCÍCIO 2
+--------------------------------------------------------------------------------
+Programa: Array1.java
+Descrição: 
+Declaração e inicialização de um array de inteiros utilizando inicializador com chaves {1, 4, 9, 16, 25, 36} e laço for para percorrer e exibir o índice e o valor de cada elemento.
+
+--------------------------------------------------------------------------------
+EXERCÍCIO 3
+--------------------------------------------------------------------------------
+Programa: Array2.java
+Descrição:
+Declaração do array dados1 com valores e dados2 com 6 posições vazias (new int[6]).
+Iteração com laço for calculando a raiz quadrada com Math.sqrt(dados1[i]) e realizando o molde explícito (casting) para (int), armazenando no respectivo índice de dados2 e exibindo o resultado formatado.
+
+--------------------------------------------------------------------------------
+EXERCÍCIO 4
+--------------------------------------------------------------------------------
+Programa: ArrayDiasMes.java
+Descrição:
+Separação de responsabilidades: o método main() apenas exibe o cabeçalho e invoca o método estático diaMes().
+O método diaMes() aloca e inicializa o array com a quantidade de dias dos 12 meses e utiliza um laço for exibindo de 1 a 12 (através de i + 1) a quantidade de dias de cada mês.
+
+--------------------------------------------------------------------------------
+EXERCÍCIO 5
+--------------------------------------------------------------------------------
+Programa: Media3.java
+Descrição:
+O método main() imprime o cabeçalho e chama o método calculaMedia().
+O método calculaMedia() cria um array de 4 posições double, gera valores aleatórios com Math.random() * 10, calcula a soma acumulada de todos os elementos e exibe as notas e a média aritmética final.
+
+--------------------------------------------------------------------------------
+EXERCÍCIO 6
+--------------------------------------------------------------------------------
+Código analisado:
+public class Array1 {
+    public static void main(String argv[]) {
+        int cont;
+        int[] dados;
+        dados = {1, 2, 3, 4, 5, 6};
+        for (cont = 0; cont < dados.length; cont++) {
+            System.out.println(dados[cont]);
+        }
+    }
+}
+
+a) Mensagem de erro fornecida pelo compilador:
+"Array initializer is not allowed here" (ou "illegal start of expression").
+
+b) O que ela quer dizer?
+Resposta:
+Em Java, a sintaxe simplificada de inicialização direta por chaves { ... } só é permitida na mesma linha em que a variável do array é declarada (ex: int[] dados = {1, 2, 3, 4, 5, 6};).
+Quando a variável de referência é apenas declarada na Stack em uma linha (int[] dados;) e a atribuição de valor é feita posteriormente em outra linha, o bloco {1, 2, 3, 4, 5, 6} solto não possui um tipo inferido pelo compilador.
+Portanto, para inicializar o array em uma instrução separada, é obrigatório usar a instanciação explícita na Heap com a palavra-chave 'new' e o tipo do array:
+dados = new int[]{1, 2, 3, 4, 5, 6};
+================================================================================

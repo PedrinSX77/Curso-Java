@@ -1,5 +1,6 @@
 # Bytecode compilado
 bin/
+out/
 *.class
 
 # Configurações de IDEs
