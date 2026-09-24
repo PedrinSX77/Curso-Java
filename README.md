@@ -63,15 +63,20 @@ Curso-Java/
 │   │   └── entities/
 │   │       ├── Order.java     # Entidade Order com id, moment e OrderStatus
 │   │       └── OrderStatus.java # Enumeração representando ciclo de vida (PENDING_PAYMENT, PROCESSING, SHIPPED, DELIVERED)
-│   └── Composition/           # Composição de Objetos (1-1 e 1-N)
-│       ├── application/
-│       │   └── Program.java   # Fluxo de entrada defensivo (do-while), leitura de contratos e cálculo temporal
-│       ├── entities/
-│       │   ├── Department.java   # Entidade Departamento
-│       │   ├── HourContract.java # Contrato por hora com data (LocalDate), valor/hora e horas
-│       │   └── Worker.java       # Trabalhador com salário base, departamento e lista protegida de contratos
-│       └── enums/
-│           └── WorkerLevel.java  # Nível de experiência profissional (JUNIOR, MID_LEVEL, SENIOR)
+│   ├── Composition/           # Composição de Objetos (1-1 e 1-N)
+│   │   ├── application/
+│   │   │   └── Program.java   # Fluxo de entrada defensivo (do-while), leitura de contratos e cálculo temporal
+│   │   ├── entities/
+│   │   │   ├── Department.java   # Entidade Departamento
+│   │   │   ├── HourContract.java # Contrato por hora com data (LocalDate), valor/hora e horas
+│   │   │   └── Worker.java       # Trabalhador com salário base, departamento e lista protegida de contratos
+│   │   └── enums/
+│   │       └── WorkerLevel.java  # Nível de experiência profissional (JUNIOR, MID_LEVEL, SENIOR)
+│   └── StringBuilder/         # Composição 1-N e Otimização de Concatenação de Strings
+│       ├── Program.java       # Instanciação de posts, agregação de comentários e impressão formatada
+│       └── entities/
+│           ├── Comment.java   # Entidade Comment com texto encapsulado
+│           └── Post.java      # Entidade Post com lista de comentários, tags temporais e toString com StringBuilder
 └── exercicios/                # Resoluções de desafios e exercícios práticos de fixação
     ├── BankExercice/          # Simulação de Sistema de Conta Bancária
     │   ├── Program.java       # Fluxo de abertura de conta, depósitos e saques com validação
@@ -190,6 +195,10 @@ Curso-Java/
   * **Delegação e Baixo Acoplamento:** O cálculo total de cada contrato é delegado a `HourContract.totalValue()`, mantendo o `Worker` focado na agregação por competência mensal (`income(year, month)`).
   * **Modernização com `java.time` (Java 8+):** Refatoração da API legada (`Date`/`Calendar`) para `LocalDate` e manipulação de competências temporais (mês/ano) utilizando `YearMonth` e `DateTimeFormatter`.
   * **Programação Defensiva no Client (`Program.java`):** Tratamento do buffer do `Scanner` e validação com laço `do-while` para quantidade de contratos.
+* **Composição com `StringBuilder` (`Section12/StringBuilder/`):**
+  * **Otimização de Strings na Heap:** Utilização de `StringBuilder` para construção de saídas de texto complexas no método `toString()`, mitigando a sobrecarga de memória causada pela imutabilidade de `String` (evitando alocações excessivas e criação de objetos intermediários na Heap durante laços de repetição).
+  * **Composição 1-N de Domínio:** A entidade `Post` gerencia uma lista privada de comentários (`List<Comment>`), protegida contra atribuição direta e manipulada estritamente via métodos de negócio (`addComment` e `removeComment`).
+  * **Formatação Temporal Reutilizável:** Reutilização de `DateTimeFormatter` com padrão `"dd/MM/yyyy HH:mm:ss"` definido como constante estática privada (`private static final`) em `Post`, evitando recriação de formatadores a cada serialização.
 
 ### 🔹 [Exercícios de Fixação](./exercicios/)
 * **[BankExercice - Sistema de Conta Bancária](./exercicios/BankExercice/):**
