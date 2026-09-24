@@ -77,6 +77,13 @@ Curso-Java/
 │       └── entities/
 │           ├── Comment.java   # Entidade Comment com texto encapsulado
 │           └── Post.java      # Entidade Post com lista de comentários, tags temporais e toString com StringBuilder
+├── Section13/                 # Herança e Polimorfismo
+│   └── Herança/               # Fundamentos de Herança e Reuso de Código
+│       ├── app/
+│       │   └── Program.java   # Ponto de entrada para testes de instanciação e herança
+│       └── entities/
+│           ├── Account.java   # Superclasse com atributos comuns (número, titular, saldo) e métodos deposit/withdraw
+│           └── BusinessAccount.java # Subclasse especializada com loanLimit e método loan
 └── exercicios/                # Resoluções de desafios e exercícios práticos de fixação
     ├── BankExercice/          # Simulação de Sistema de Conta Bancária
     │   ├── Program.java       # Fluxo de abertura de conta, depósitos e saques com validação
@@ -199,6 +206,13 @@ Curso-Java/
   * **Otimização de Strings na Heap:** Utilização de `StringBuilder` para construção de saídas de texto complexas no método `toString()`, mitigando a sobrecarga de memória causada pela imutabilidade de `String` (evitando alocações excessivas e criação de objetos intermediários na Heap durante laços de repetição).
   * **Composição 1-N de Domínio:** A entidade `Post` gerencia uma lista privada de comentários (`List<Comment>`), protegida contra atribuição direta e manipulada estritamente via métodos de negócio (`addComment` e `removeComment`).
   * **Formatação Temporal Reutilizável:** Reutilização de `DateTimeFormatter` com padrão `"dd/MM/yyyy HH:mm:ss"` definido como constante estática privada (`private static final`) em `Post`, evitando recriação de formatadores a cada serialização.
+
+### 🔹 [Section 13: Herança e Polimorfismo](./Section13/)
+* **Fundamentos de Herança (`Section13/Herança/`):**
+  * **Relação "é-um" e Reuso com `extends`:** Implementação da relação de herança onde a classe `BusinessAccount` estende `Account`, herdando seus atributos e comportamentos fundamentais de forma limpa.
+  * **Invocação de Construtores da Superclasse com `super()`:** Delegação da inicialização dos atributos herdados (`number`, `holder`, `balance`) diretamente ao construtor da superclasse `Account`.
+  * **Blindagem de Precedência de Operadores:** Validação do método `withdraw(amount)` em `Account`, corrigindo a expressão de dedução de taxa com `this.balance -= amount + 5.0` (evitando erro de precedência de operadores matemáticos com `-=`).
+  * **Especialização de Negócio com `loan(amount)`:** Implementação de comportamento exclusivo da conta empresarial para concessão de empréstimo limitado por `loanLimit`, reutilizando a regra de `deposit(amount)`.
 
 ### 🔹 [Exercícios de Fixação](./exercicios/)
 * **[BankExercice - Sistema de Conta Bancária](./exercicios/BankExercice/):**
