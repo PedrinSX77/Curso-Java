@@ -78,12 +78,13 @@ Curso-Java/
 │           ├── Comment.java   # Entidade Comment com texto encapsulado
 │           └── Post.java      # Entidade Post com lista de comentários, tags temporais e toString com StringBuilder
 ├── Section13/                 # Herança e Polimorfismo
-│   └── Herança/               # Fundamentos de Herança e Reuso de Código
+│   └── Herança/               # Fundamentos de Herança, Upcasting/Downcasting e Polimorfismo
 │       ├── app/
-│       │   └── Program.java   # Ponto de entrada para testes de instanciação e herança
+│       │   └── Program.java   # Demonstração prática de Upcasting, Downcasting defensivo com instanceof e Polimorfismo
 │       └── entities/
-│           ├── Account.java   # Superclasse com atributos comuns (número, titular, saldo) e métodos deposit/withdraw
-│           └── BusinessAccount.java # Subclasse especializada com loanLimit e método loan
+│           ├── Account.java   # Superclasse com atributo protegido (protected balance) e métodos de saque/depósito
+│           ├── BusinessAccount.java # Subclasse com loanLimit e sobreposição de withdraw utilizando super.withdraw()
+│           └── SavingAccount.java   # Subclasse de poupança com taxa de juros e sobreposição de withdraw isento de taxa
 └── exercicios/                # Resoluções de desafios e exercícios práticos de fixação
     ├── BankExercice/          # Simulação de Sistema de Conta Bancária
     │   ├── Program.java       # Fluxo de abertura de conta, depósitos e saques com validação
@@ -209,10 +210,16 @@ Curso-Java/
 
 ### 🔹 [Section 13: Herança e Polimorfismo](./Section13/)
 * **Fundamentos de Herança (`Section13/Herança/`):**
-  * **Relação "é-um" e Reuso com `extends`:** Implementação da relação de herança onde a classe `BusinessAccount` estende `Account`, herdando seus atributos e comportamentos fundamentais de forma limpa.
-  * **Invocação de Construtores da Superclasse com `super()`:** Delegação da inicialização dos atributos herdados (`number`, `holder`, `balance`) diretamente ao construtor da superclasse `Account`.
-  * **Blindagem de Precedência de Operadores:** Validação do método `withdraw(amount)` em `Account`, corrigindo a expressão de dedução de taxa com `this.balance -= amount + 5.0` (evitando erro de precedência de operadores matemáticos com `-=`).
-  * **Especialização de Negócio com `loan(amount)`:** Implementação de comportamento exclusivo da conta empresarial para concessão de empréstimo limitado por `loanLimit`, reutilizando a regra de `deposit(amount)`.
+  * **Relação "é-um" e Reuso com `extends`:** Implementação da relação de herança onde `BusinessAccount` e `SavingAccount` estendem `Account`, herdando seus atributos e comportamentos fundamentais de forma limpa.
+  * **Modificador de Acesso `protected`:** Utilização de `protected Double balance` na superclasse `Account`, permitindo que subclasses no mesmo pacote (ou derivadas) acessem e alterem o saldo diretamente sem expor setters públicos para o restante da aplicação.
+  * **Invocação de Construtores com `super()`:** Delegação da inicialização dos atributos comuns (`number`, `holder`, `balance`) diretamente ao construtor da superclasse `Account`.
+  * **Upcasting e Downcasting Defensivo:**
+    * **Upcasting:** Atribuição implícita de objetos das subclasses a variáveis do tipo `Account` (`Account acc1 = bAcc;`), base conceitual para coleções heterogêneas e polimorfismo.
+    * **Downcasting com `instanceof`:** Conversão explícita da superclasse para a subclasse (`(BusinessAccount) acc2`), com validação defensiva via `if (acc3 instanceof BusinessAccount)` para evitar a exceção em tempo de execução `ClassCastException`.
+  * **Sobreposição (`@Override`), `super` e Polimorfismo:**
+    * **Isenção em `SavingAccount`:** Sobrescrita do método `withdraw(amount)` para saque isento de taxa bancária (`this.balance -= amount`).
+    * **Reuso com `super.withdraw(amount)` em `BusinessAccount`:** Sobrescrita que delega o saque com taxa padrão de `$ 5.00` à superclasse e desconta uma taxa adicional de `$ 2.00` (`balance -= 2.0`).
+    * **Despacho Dinâmico de Métodos (*Dynamic Method Dispatch*):** Variáveis com tipo estático `Account` executam em tempo de execução o método correto de acordo com a instância real alocada na memória Heap.
 
 ### 🔹 [Exercícios de Fixação](./exercicios/)
 * **[BankExercice - Sistema de Conta Bancária](./exercicios/BankExercice/):**
